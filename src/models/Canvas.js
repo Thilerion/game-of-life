@@ -1,3 +1,5 @@
+import { LIVE } from '../constants';
+
 export default class Canvas {
 	constructor(el, settings) {
 		this.canvas = el;
@@ -12,12 +14,11 @@ export default class Canvas {
 		this.canvas.height = this.height;
 	}
 
-	render({ state, changes, efficient = true }) {
-		this.drawGridLines();
-		
-		if (this.efficient) {
+	render({ state, changes, efficient = true }) {	
+		if (efficient) {
 			this.drawChanges(changes);
 		} else {
+			this.drawGridLines();
 			this.drawState(state);
 		}
 	}
@@ -29,6 +30,12 @@ export default class Canvas {
 				this.drawCell(x, y, state.cellAt(x, y));		
 			}
 		}
+	}
+
+	drawChanges(changes) {
+		changes.forEach(({ x, y, type }) => {
+			this.drawCell(x, y, type);
+		})
 	}
 
 	drawCell(x, y, type) {

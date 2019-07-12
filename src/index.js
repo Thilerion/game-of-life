@@ -10,3 +10,10 @@ const game = new GameOfLife(
 );
 
 game.render();
+
+game.update();
+
+setInterval(() => {
+	game.update();
+	game.render();
+}, 100);

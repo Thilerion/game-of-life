@@ -19,6 +19,8 @@ export default class GameOfLife {
 		this.changes = changes;
 		this.state = state;
 		this.generation += 1;
+
+		console.log(this);
 	}
 
 	render() {

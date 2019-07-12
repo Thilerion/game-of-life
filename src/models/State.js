@@ -1,4 +1,5 @@
 import { LIVE, DEAD } from '../constants';
+import { copy2dArray } from '../utils';
 
 export default class State {
 	constructor(grid) {
@@ -13,7 +14,7 @@ export default class State {
 	}
 
 	withinBounds(x, y) {
-		return x >= 0 && y >= 0 && x < this.width && y < this.height;
+		return x >= 0 && y >= 0 && x < this.cols && y < this.rows;
 	}
 
 	getNeigbors(x, y) {
@@ -24,7 +25,7 @@ export default class State {
 					continue; //skip own cell
 				} else if (!this.withinBounds(x + i, y + j)) {
 					continue; //skip cells outside of grid
-				} else if (this.getCell(x + i, y + j) === LIVE) {
+				} else if (this.cellAt(x + i, y + j) === LIVE) {
 					count++;
 				}
 			}

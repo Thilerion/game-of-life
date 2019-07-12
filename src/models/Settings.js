@@ -2,7 +2,7 @@ import { DEAD, LIVE } from '../constants';
 
 class Settings {
 	constructor() {
-		this.cellSize = 5;
+		this.cellSize = 6;
 		this.gridLineSize = 1;
 		
 		this.rows = 100;
