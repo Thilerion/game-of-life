@@ -1,0 +1,19 @@
+{
+  "name": "game-of-life2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+	"test": "echo \"Error: no test specified\" && exit 1",
+	"dev": "parcel src/index.html --port 8080"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel-bundler": "^1.12.3"
+  },
+  "dependencies": {
+    "autoprefixer": "^9.6.1"
+  }
+}
