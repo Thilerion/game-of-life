@@ -14,6 +14,33 @@ export default class Canvas {
 
 	render({ state, changes, efficient = true }) {
 		this.drawGridLines();
+		
+		if (this.efficient) {
+			this.drawChanges(changes);
+		} else {
+			this.drawState(state);
+		}
+	}
+
+	drawState(state) {
+		console.log(state.cols, state.rows);
+		for (let y = 0; y < state.cols; y++) {
+			for (let x = 0; x < state.rows; x++) {
+				this.drawCell(x, y, state.cellAt(x, y));		
+			}
+		}
+	}
+
+	drawCell(x, y, type) {
+		const color = this.settings.colors[type];
+		const lineSize = this.settings.gridLineSize;
+		const cellSize = this.settings.cellSize;
+
+		const startX = lineSize + (cellSize + lineSize) * x;
+		const startY = lineSize + (cellSize + lineSize) * y;
+
+		this.ctx.fillStyle = color;
+		this.ctx.fillRect(startX, startY, cellSize, cellSize);
 	}
 
 	drawGridLines() {

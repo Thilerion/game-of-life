@@ -4,8 +4,8 @@ export default class State {
 	constructor(grid) {
 		this.grid = grid;
 
-		this.rows = grid.length;
-		this.cols = grid[0].length;
+		this.rows = this.grid.length;
+		this.cols = this.grid[0].length;
 	}
 
 	cellAt(x, y) {
