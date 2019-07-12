@@ -40,7 +40,10 @@ export default class State {
 			newGrid[y][x] = type;
 		}
 
-		return new State(newGrid);
+		return {
+			state: new State(newGrid),
+			changes
+		};
 	}
 
 	getNextGeneration() {
@@ -71,7 +74,7 @@ export default class State {
 				if (Math.random() < threshold) {
 					arr[y][x] = LIVE;
 				} else {
-					arr[y][x] = EMPTY;
+					arr[y][x] = DEAD;
 				}
 			}
 		}
