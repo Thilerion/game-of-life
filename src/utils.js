@@ -1,0 +1,1 @@
+export const copy2dArray = arr => arr.map(row => row.slice());
