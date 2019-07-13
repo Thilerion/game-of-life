@@ -11,12 +11,6 @@ const game = new GameOfLife(
 
 game.init();
 
-
-// setInterval(() => {
-// 	game.update();
-// 	game.render();
-// }, 1000/10);
-
 const nextGenBtn = document.getElementById('nextGenBtn');
 nextGenBtn.addEventListener('click', () => {
 	game.tick();
