@@ -15,16 +15,9 @@ export default class GameOfLife {
 		this.previousState = this.state;
 		this.state = this.state.update();
 		this.generation += 1;
-
-		console.log(this.state.grid[0], this.previousState.grid[0]);
 	}
 
 	render() {
-		// debugger;
-		if (this.previousState) {
-
-			console.log(this.state.grid[0], this.previousState.grid[0]);
-		}
 		this.renderer.render({
 			state: this.state,
 			previousState: this.previousState,

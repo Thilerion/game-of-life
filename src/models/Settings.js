@@ -11,7 +11,7 @@ class Settings {
 		this.colors = {
 			[LIVE]: "#AAAAAA",
 			[DEAD]: "#000000",
-			gridLine: "#444444"
+			gridLine: "#222"
 		}
 	}
 
