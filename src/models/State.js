@@ -1,5 +1,5 @@
 import { LIVE, DEAD } from '../constants';
-import { copy2dArray } from '../utils';
+import { cloneNDArray } from '../utils';
 
 export default class State {
 	constructor(grid) {
@@ -34,7 +34,7 @@ export default class State {
 	}
 
 	update() {
-		const newGrid = copy2dArray(this.grid);
+		const newGrid = cloneNDArray(this.grid);
 
 		for (let y = 0; y < this.rows; y++) {
 			for (let x = 0; x < this.cols; x++) {
