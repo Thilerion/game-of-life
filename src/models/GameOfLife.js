@@ -8,26 +8,27 @@ export default class GameOfLife {
 
 		this.generation = 1;
 
-		this.changes = null;
 		this.previousState = null;
 	}
 
 	update() {
 		this.previousState = this.state;
-		const { state, changes } = this.state.update();
-		
-		this.changes = changes;
-		this.state = state;
+		this.state = this.state.update();
 		this.generation += 1;
 
-		console.log(this);
+		console.log(this.state.grid[0], this.previousState.grid[0]);
 	}
 
 	render() {
+		// debugger;
+		if (this.previousState) {
+
+			console.log(this.state.grid[0], this.previousState.grid[0]);
+		}
 		this.renderer.render({
 			state: this.state,
-			changes: this.changes,
-			efficient: this.changes !== null && this.generation > 1
+			previousState: this.previousState,
+			efficient: this.previousState != null && this.generation > 2
 		});
 	}
 }

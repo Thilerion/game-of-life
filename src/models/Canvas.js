@@ -14,9 +14,9 @@ export default class Canvas {
 		this.canvas.height = this.height;
 	}
 
-	render({ state, changes, efficient = true }) {	
+	render({ state, previousState, efficient = true }) {	
 		if (efficient) {
-			this.drawChanges(changes);
+			this.drawChanges(state, previousState);
 		} else {
 			this.drawGridLines();
 			this.drawState(state);
@@ -25,17 +25,23 @@ export default class Canvas {
 
 	drawState(state) {
 		console.log(state.cols, state.rows);
-		for (let y = 0; y < state.cols; y++) {
-			for (let x = 0; x < state.rows; x++) {
+		for (let y = 0; y < state.rows; y++) {
+			for (let x = 0; x < state.cols; x++) {
 				this.drawCell(x, y, state.cellAt(x, y));		
 			}
 		}
 	}
 
-	drawChanges(changes) {
-		changes.forEach(({ x, y, type }) => {
-			this.drawCell(x, y, type);
-		})
+	drawChanges(state, prevState) {
+		for (let y = 0; y < state.rows; y++) {
+			for (let x = 0; x < state.cols; x++) {
+				const prevType = state.cellAt(x, y);
+				const newType = prevState.cellAt(x, y);
+				if (prevType !== newType) {
+					this.drawCell(x, y, state.cellAt(x, y));
+				}
+			}
+		}
 	}
 
 	drawCell(x, y, type) {

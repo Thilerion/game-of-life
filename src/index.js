@@ -4,7 +4,7 @@ import settings from './models/Settings';
 import GameOfLife from './models/GameOfLife';
 
 const game = new GameOfLife(
-	State.random(settings.cols, settings.rows, 0.25),
+	State.random(settings.cols, settings.rows, 0.1),
 	settings,
 	Canvas
 );
@@ -16,4 +16,4 @@ game.update();
 setInterval(() => {
 	game.update();
 	game.render();
-}, 100);
+}, 500);

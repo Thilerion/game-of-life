@@ -17,7 +17,7 @@ export default class State {
 		return x >= 0 && y >= 0 && x < this.cols && y < this.rows;
 	}
 
-	getNeigbors(x, y) {
+	getNeighbors(x, y) {
 		let count = 0;
 		for (let i = -1; i < 2; i++) {
 			for (let j = -1; j < 2; j++) {
@@ -34,37 +34,26 @@ export default class State {
 	}
 
 	update() {
-		const changes = this.getNextGeneration();
 		const newGrid = copy2dArray(this.grid);
-
-		for (let { x, y, type } of changes) {
-			newGrid[y][x] = type;
-		}
-
-		return {
-			state: new State(newGrid),
-			changes
-		};
-	}
-
-	getNextGeneration() {
-		const changes = [];
 
 		for (let y = 0; y < this.rows; y++) {
 			for (let x = 0; x < this.cols; x++) {
 				const type = this.cellAt(x, y);
-				const count = this.getNeigbors(x, y);
+				const count = this.getNeighbors(x, y);
+
+				// if (x < 2 && y < 2) debugger;
 
 				if (type === DEAD && count === 3) {
-					changes.push({ x, y, type: LIVE });
+					newGrid[y][x] = LIVE;
 				} else if (type === LIVE) {
 					if (count < 2 || count > 3) {
-						changes.push({ x, y, type: DEAD });
+						newGrid[y][x] = DEAD;
 					}
 				}
 			}
 		}
-		return changes;
+
+		return new State(newGrid);
 	}
 
 	static random(width, height, threshold = 0.25) {
