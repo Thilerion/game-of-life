@@ -9,7 +9,7 @@ class Settings {
 		this.cols = 100;
 
 		this.colors = {
-			[LIVE]: "#AAAAAA",
+			[LIVE]: "#BBB",
 			[DEAD]: "#000000",
 			gridLine: "#222"
 		}

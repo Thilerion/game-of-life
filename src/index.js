@@ -9,17 +9,26 @@ const game = new GameOfLife(
 	Canvas
 );
 
-game.render();
+game.init();
 
-// game.update();
 
-setInterval(() => {
-	game.update();
-	game.render();
-}, 1000/10);
+// setInterval(() => {
+// 	game.update();
+// 	game.render();
+// }, 1000/10);
 
 const nextGenBtn = document.getElementById('nextGenBtn');
 nextGenBtn.addEventListener('click', () => {
-	game.update();
-	game.render();
+	game.tick();
+})
+
+const toggleStateBtn = document.getElementById('toggleStateBtn');
+toggleStateBtn.addEventListener('click', () => {
+	if (game.autoPlay) {
+		game.stop();
+		toggleStateBtn.innerText = "Start";
+	} else {
+		game.start();
+		toggleStateBtn.innerText = "Stop";
+	}
 })
