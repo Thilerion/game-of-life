@@ -1,0 +1,11 @@
+- [ ] Cycle detection (https://en.wikipedia.org/wiki/Cycle_detection)
+- [ ] Differentiate between canvas gridSize and calculated gridSize (grid can be larger than what the canvas shows)
+- [ ] Possibility to handle grid edges differently: infinite world where going to the left of `row[0]` means ending up at `row[rowLength - 1]`
+- [ ] User input for cells; clicking creates live cells on those squares, while pausing the game if it is running
+- [ ] Allow certain pre-determined structures to be placed in the world
+- [ ] Show current generation
+- [ ] Improved settings and user changeable settings
+- [ ] Show slider for speed
+- [ ] Show slider for grid size (related to TODO 2)
+- [ ] Setting for random threshold
+- [ ] Buttons for creating a new world; empty, random (with different thresholds)
